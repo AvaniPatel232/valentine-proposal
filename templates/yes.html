@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>YAY 💖</title>
+    <style>
+        body {
+            margin: 0;
+            background: url("/static/heart-bg.jpg");
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        h1 {
+            color: #ff4d88;
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        img {
+            width: 250px;
+        }
+
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+<h1>YIPPEEEE 💕</h1>
+
+<img src="/static/cat_dance.gif">
+
+<canvas id="confetti"></canvas>
+
+<script>
+const canvas = document.getElementById("confetti");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let pieces = [];
+
+for (let i = 0; i < 100; i++) {
+    pieces.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        size: Math.random() * 4 + 2,       // smaller
+        speed: Math.random() * 1.5 + 0.5   // slower
+    });
+}
+
+function update() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    ctx.fillStyle = "rgba(255, 182, 193, 0.7)";  // soft pink
+
+    pieces.forEach(p => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fill();
+
+        p.y += p.speed;
+
+        if (p.y > canvas.height) {
+            p.y = 0;
+            p.x = Math.random() * canvas.width;
+        }
+    });
+
+    requestAnimationFrame(update);
+}
+
+update();
+</script>
+
+</body>
+</html>
+

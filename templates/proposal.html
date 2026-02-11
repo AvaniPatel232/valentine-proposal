@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Be Mine? 💖</title>
+    <style>
+        body {
+            margin: 0;
+            background: url("/static/heart-bg.jpg");
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        h1 {
+            color: #d6336c;
+            margin-bottom: 20px;
+        }
+
+        img {
+            width: 200px;
+            margin-bottom: 20px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        button {
+            padding: 10px 25px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Will you be my Valentine? 💘</h1>
+
+<img src="/static/cat_heart.gif">
+
+<div class="buttons">
+    <a href="/yes">
+        <button id="yes">YES</button>
+    </a>
+
+    <button id="no">NO</button>
+</div>
+
+<script>
+const noButton = document.getElementById("no");
+const yesButton = document.getElementById("yes");
+
+let yesSize = 18;  // starting font size
+
+function moveButton() {
+    const maxX = window.innerWidth - noButton.offsetWidth;
+    const maxY = window.innerHeight - noButton.offsetHeight;
+
+    const randomX = Math.random() * maxX;
+    const randomY = Math.random() * maxY;
+
+    noButton.style.position = "absolute";
+    noButton.style.left = randomX + "px";
+    noButton.style.top = randomY + "px";
+
+    // make YES bigger
+    yesSize += 5;
+    yesButton.style.fontSize = yesSize + "px";
+    yesButton.style.padding = (10 + yesSize/4) + "px " + (25 + yesSize/3) + "px";
+}
+
+noButton.addEventListener("mouseenter", moveButton);
+</script>
+
+</body>
+</html>

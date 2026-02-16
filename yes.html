@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>YAY 💖</title>
+    <meta charset="UTF-8">
+    <title>YIPPEE 💖</title>
     <style>
         body {
             margin: 0;
@@ -13,6 +14,7 @@
             height: 100vh;
             font-family: Arial, sans-serif;
             overflow: hidden;
+            text-align: center;
         }
 
         h1 {
@@ -39,9 +41,20 @@
 
 <img src="/valentine-proposal/static/cat_dance.gif">
 
+<audio id="yippeeSound" src="/valentine-proposal/static/yippee.mp3"></audio>
+
 <canvas id="confetti"></canvas>
 
 <script>
+/* 🎉 Play YIPPEE sound */
+window.addEventListener("load", function() {
+    const sound = document.getElementById("yippeeSound");
+    sound.play().catch(() => {
+        console.log("Autoplay blocked (browser restriction)");
+    });
+});
+
+/* 🎊 Soft confetti */
 const canvas = document.getElementById("confetti");
 const ctx = canvas.getContext("2d");
 
@@ -54,15 +67,15 @@ for (let i = 0; i < 100; i++) {
     pieces.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        size: Math.random() * 4 + 2,       // smaller
-        speed: Math.random() * 1.5 + 0.5   // slower
+        size: Math.random() * 4 + 2,
+        speed: Math.random() * 1.5 + 0.5
     });
 }
 
 function update() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    ctx.fillStyle = "rgba(255, 182, 193, 0.7)";  // soft pink
+    ctx.fillStyle = "rgba(255, 182, 193, 0.7)";
 
     pieces.forEach(p => {
         ctx.beginPath();
@@ -85,4 +98,3 @@ update();
 
 </body>
 </html>
-

@@ -5,7 +5,8 @@
     <style>
         body {
             margin: 0;
-            background: url("/valentine-proposal/static/heart-bg.jpg");
+            background: url("static/heart-bg.jpg");
+            background-size: cover;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -44,7 +45,7 @@
 
 <h1>Will you be my Valentine? 💘</h1>
 
-<img src="/valentine-proposal/static/cat_heart.gif">
+<img src="static/cat_heart.gif">
 
 <div class="buttons">
     <a href="yes.html">
@@ -58,7 +59,7 @@
 const noButton = document.getElementById("no");
 const yesButton = document.getElementById("yes");
 
-let yesSize = 18;  // starting font size
+let yesSize = 18;
 
 function moveButton() {
     const maxX = window.innerWidth - noButton.offsetWidth;
@@ -71,7 +72,6 @@ function moveButton() {
     noButton.style.left = randomX + "px";
     noButton.style.top = randomY + "px";
 
-    // make YES bigger
     yesSize += 5;
     yesButton.style.fontSize = yesSize + "px";
     yesButton.style.padding = (10 + yesSize/4) + "px " + (25 + yesSize/3) + "px";

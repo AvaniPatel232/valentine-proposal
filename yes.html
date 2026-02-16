@@ -1,30 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>YIPPEE 💖</title>
+    <title>YIPPEEE 💖</title>
     <style>
         body {
             margin: 0;
-            background: url("/valentine-proposal/static/heart-bg.jpg");
+            background: url("static/heart-bg.jpg");
+            background-size: cover;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
             font-family: Arial, sans-serif;
-            overflow: hidden;
             text-align: center;
+            overflow: hidden;
         }
 
         h1 {
             color: #ff4d88;
             font-size: 40px;
-            margin-bottom: 20px;
         }
 
         img {
             width: 250px;
+            margin-top: 20px;
         }
 
         canvas {
@@ -39,22 +39,20 @@
 
 <h1>YIPPEEEE 💕</h1>
 
-<img src="/valentine-proposal/static/cat_dance.gif">
+<img src="static/cat_dance.gif">
 
-<audio id="yippeeSound" src="/valentine-proposal/static/yippee.mp3"></audio>
+<audio id="yippeeSound" src="static/yipppe.mp3"></audio>
 
 <canvas id="confetti"></canvas>
 
 <script>
-/* 🎉 Play YIPPEE sound */
-window.addEventListener("load", function() {
+/* Play sound on page interaction */
+window.addEventListener("click", function() {
     const sound = document.getElementById("yippeeSound");
-    sound.play().catch(() => {
-        console.log("Autoplay blocked (browser restriction)");
-    });
-});
+    sound.play();
+}, { once: true });
 
-/* 🎊 Soft confetti */
+/* Soft confetti */
 const canvas = document.getElementById("confetti");
 const ctx = canvas.getContext("2d");
 
@@ -63,18 +61,17 @@ canvas.height = window.innerHeight;
 
 let pieces = [];
 
-for (let i = 0; i < 100; i++) {
+for (let i = 0; i < 120; i++) {
     pieces.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        size: Math.random() * 4 + 2,
-        speed: Math.random() * 1.5 + 0.5
+        size: Math.random() * 6 + 4,
+        speed: Math.random() * 2 + 1
     });
 }
 
 function update() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-
     ctx.fillStyle = "rgba(255, 182, 193, 0.7)";
 
     pieces.forEach(p => {
